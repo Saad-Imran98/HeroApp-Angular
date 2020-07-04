@@ -1,0 +1,22 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" },
+    { "id": 2, "title": "json-server2", "author": "saad" }
+  ],
+  "heroes": [
+    {"id":11,"name":"Dr Saad" },
+    {"id":12,"name":"Narco" },
+    {"id":13,"name":"Bombasto" },
+    {"id":14,"name":"Celeritas" },
+    {"id":15,"name":"Magneta" },
+    {"id":16,"name":"RubberMan" },
+    {"id":17,"name":"Dynama" },
+    {"id":18,"name":"Dr IQ" },
+    {"id":19,"name":"Magma" },
+    {"id":20,"name":"Tornado" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

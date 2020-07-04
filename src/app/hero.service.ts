@@ -4,7 +4,7 @@ import {HEROES} from "./heroes/mock-heroes";
 import {Observable, of} from "rxjs";
 import {MessageService} from "./message.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, map, tap} from "rxjs/operators";
+import {catchError, tap} from "rxjs/operators";
 
 /**
  * Service to get hero data
@@ -19,15 +19,20 @@ export class HeroService {
     private http: HttpClient
   ) { }
 
-  private heroesUrl = 'api/heroes';
+  // private heroesUrl = 'api/heroes';
+    private heroesUrl = 'http://localhost:3000/heroes';
 
   /** GET heroes from the server */
+  // getHeroes(): Observable<Hero[]> {
+  //   return this.http.get<Hero[]>(this.heroesUrl)
+  //     .pipe(
+  //       tap(_=> this.log('fetched heroes')),
+  //       catchError(this.handleError<Hero[]>('getHeroes', []))
+  //     );
+  // }
+
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(_=> this.log('fetched heroes')),
-        catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
+    return this.http.get<Hero[]>(this.heroesUrl);
   }
 
   /**
@@ -51,7 +56,7 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    //const url = `${this.heroesUrl}/${id}`;
 
     return of(HEROES.find(hero => hero.id === id))
       .pipe(
@@ -64,5 +69,17 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
+  // updateHero(hero: Hero): Observable<any> {
+  //
+  //   return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+  //     tap(_ => this.log(`updated hero id=${hero.id}`)),
+  //     catchError(this.handleError<any>('updateHero'))
+  //   );
+  // }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
 }
