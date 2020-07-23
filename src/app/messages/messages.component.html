@@ -3,7 +3,9 @@
   <h2>Messages</h2>
 
   <div *ngFor="let message of messageService.messages">{{message}}</div>
-  <button class="clear"
-          (click)="messageService.clear()">clear
+  <button mat-fab color="primary"
+          class="clear"
+          (click)="messageService.clear()"
+          >clear
   </button>
 </div>
